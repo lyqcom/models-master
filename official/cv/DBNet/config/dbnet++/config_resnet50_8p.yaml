@@ -1,0 +1,20 @@
+net: DBnetPP
+device_num: 8
+backbone:
+    initializer: resnet50
+    pretrained: True
+    backbone_ckpt: "./pretrained/resnet50-19c8e357.ckpt" # If on modelarts, set the name of checkpoint saved in data_url
+segdetector:
+    in_channels: [256, 512, 1024, 2048]  # R18: [64, 128, 256, 512]
+    attention_type: scale_channel_spatial
+optimizer:
+    lr:
+        base_lr: 0.02
+dataset:
+    num_workers: 7
+    prefetch_size: 42
+train:
+    total_epochs: 2000
+    batch_size: 8
+eval:
+    box_thresh: 0.6

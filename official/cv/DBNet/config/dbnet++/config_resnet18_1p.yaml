@@ -1,0 +1,7 @@
+net: DBnetPP
+backbone:
+    initializer: resnet18
+    pretrained: True
+    backbone_ckpt: "./pretrained/resnet18-5c106cde.ckpt" # If on modelarts, set the name of checkpoint saved in data_url
+segdetector:
+    attention_type: scale_channel_spatial
